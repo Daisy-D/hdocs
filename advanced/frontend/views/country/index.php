@@ -1,15 +1,15 @@
 <?php
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\widgets\LinkPager;
 ?>
-<?php $form = ActiveForm::begin(); ?>
+<h1>Countries</h1>
+<ul>
+<?php foreach ($countries as $country): ?>
+    <li>
+        <?= Html::encode("{$country->name} ({$country->code})") ?>:
+        <?= $country->population ?>
+    </li>
+<?php endforeach; ?>
+</ul>
 
-    <?= $form->field($model, 'name') ?>
-
-    <?= $form->field($model, 'email') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
-    </div>
-
-<?php ActiveForm::end(); ?>
+<?= LinkPager::widget(['pagination' => $pagination]) ?>
